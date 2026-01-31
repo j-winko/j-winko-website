@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jace Winko - Compliance & Financial Crime Professional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&family=Source+Serif+4:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --deep-blue: #0A3D4F;
+            --ocean-blue: #1A5F7A;
+            --light-blue: #3B9AB2;
+            --teal: #4FB3BF;
+            --forest-green: #57A773;
+            --light-green: #6BC785;
+            --mint: #8FD9A8;
+            --off-white: #F8FFFE;
+            --dark-text: #0F2B35;
+            --light-text: rgba(248, 255, 254, 0.95);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--dark-text);
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--ocean-blue) 100%);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated background waves */
+        .wave-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .wave {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, var(--teal) 0%, transparent 70%);
+            animation: wave-float 20s ease-in-out infinite;
+        }
+
+        .wave:nth-child(1) {
+            top: -50%;
+            left: -50%;
+            animation-delay: 0s;
+        }
+
+        .wave:nth-child(2) {
+            top: 20%;
+            left: -30%;
+            animation-delay: -7s;
+            animation-duration: 25s;
+        }
+
+        .wave:nth-child(3) {
+            top: 60%;
+            left: 40%;
+            animation-delay: -14s;
+            animation-duration: 30s;
+        }
+
+        @keyframes wave-float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 61, 79, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(75, 179, 191, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 1rem 5%;
+            background: rgba(10, 61, 79, 0.95);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--mint);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--light-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--light-green);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 8rem 10%;
+            position: relative;
+        }
+
+        /* Hero Section */
+        #hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--ocean-blue) 50%, var(--forest-green) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(ellipse at top right, var(--light-green) 0%, transparent 70%);
+            opacity: 0.2;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.3;
+                transform: scale(1.05);
+            }
+        }
+
+        .hero-content {
+            z-index: 10;
+            max-width: 800px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(107, 199, 133, 0.2);
+            border: 1px solid var(--light-green);
+            border-radius: 50px;
+            color: var(--mint);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: fade-slide-in 0.8s ease-out;
+        }
+
+        @keyframes fade-slide-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            color: var(--off-white);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fade-slide-in 1s ease-out 0.2s backwards;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--light-green) 0%, var(--teal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--light-text);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            animation: fade-slide-in 1.2s ease-out 0.4s backwards;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: rgba(248, 255, 254, 0.8);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            animation: fade-slide-in 1.4s ease-out 0.6s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            animation: fade-slide-in 1.6s ease-out 0.8s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--forest-green) 0%, var(--light-green) 100%);
+            color: var(--deep-blue);
+            box-shadow: 0 4px 20px rgba(107, 199, 133, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(107, 199, 133, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--light-green);
+            border: 2px solid var(--light-green);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(107, 199, 133, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: var(--off-white);
+            position: relative;
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(87, 167, 115, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(26, 95, 122, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            background: linear-gradient(135deg, rgba(87, 167, 115, 0.1) 0%, rgba(75, 179, 191, 0.1) 100%);
+            border: 1px solid var(--forest-green);
+            border-radius: 50px;
+            color: var(--forest-green);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            color: var(--dark-text);
+            line-height: 1.2;
+        }
+
+        /* About Section */
+        #about {
+            padding: 8rem 10%;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--ocean-blue);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--dark-text);
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--forest-green);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 6px 30px rgba(87, 167, 115, 0.15);
+        }
+
+        .experience-card h4 {
+            font-size: 1.4rem;
+            color: var(--deep-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-card .company {
+            font-size: 1.1rem;
+            color: var(--forest-green);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-card .duration {
+            font-size: 0.9rem;
+            color: rgba(15, 43, 53, 0.6);
+            margin-bottom: 1rem;
+        }
+
+        .experience-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Skills Section */
+        #skills {
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--ocean-blue) 100%);
+            padding: 8rem 10%;
+        }
+
+        #skills .section-tag {
+            border-color: var(--light-green);
+            color: var(--light-green);
+            background: rgba(107, 199, 133, 0.1);
+        }
+
+        #skills h2 {
+            color: var(--off-white);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(107, 199, 133, 0.2);
+            transition: all 0.3s ease;
+            max-width: 380px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--light-green);
+            box-shadow: 0 8px 40px rgba(107, 199, 133, 0.2);
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            color: var(--mint);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(107, 199, 133, 0.15);
+            border: 1px solid rgba(107, 199, 133, 0.3);
+            border-radius: 8px;
+            color: var(--light-text);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(107, 199, 133, 0.25);
+            border-color: var(--light-green);
+            transform: scale(1.05);
+        }
+
+        /* Projects Section */
+        #projects {
+            padding: 8rem 10%;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            max-width: 450px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--forest-green) 0%, var(--teal) 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 12px 40px rgba(87, 167, 115, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, var(--ocean-blue) 0%, var(--forest-green) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.3) 100%);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.6rem;
+            color: var(--deep-blue);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(15, 43, 53, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            padding: 0.3rem 0.8rem;
+            background: rgba(87, 167, 115, 0.1);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--forest-green);
+            font-weight: 600;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link.demo {
+            background: var(--forest-green);
+            color: white;
+        }
+
+        .project-link.demo:hover {
+            background: var(--light-green);
+            transform: scale(1.05);
+        }
+
+        .project-link.code {
+            background: transparent;
+            color: var(--ocean-blue);
+            border: 2px solid var(--ocean-blue);
+        }
+
+        .project-link.code:hover {
+            background: rgba(26, 95, 122, 0.1);
+        }
+
+        /* Blog Section */
+        #blog {
+            background: linear-gradient(135deg, var(--forest-green) 0%, var(--light-green) 100%);
+            padding: 8rem 10%;
+        }
+
+        #blog .section-tag {
+            border-color: var(--deep-blue);
+            color: var(--deep-blue);
+            background: rgba(10, 61, 79, 0.1);
+        }
+
+        #blog h2 {
+            color: var(--deep-blue);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .blog-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(10, 61, 79, 0.1);
+            max-width: 420px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(10, 61, 79, 0.2);
+            background: white;
+        }
+
+        .blog-date {
+            font-size: 0.9rem;
+            color: var(--forest-green);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .blog-card h3 {
+            font-size: 1.5rem;
+            color: var(--deep-blue);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .blog-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(15, 43, 53, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-link {
+            color: var(--ocean-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .blog-link:hover {
+            color: var(--forest-green);
+            gap: 0.8rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 8rem 10%;
+            min-height: 80vh;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-content h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(15, 43, 53, 0.8);
+            margin-bottom: 3rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 2.5rem;
+            background: white;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--deep-blue);
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(87, 167, 115, 0.2);
+            background: linear-gradient(135deg, var(--forest-green) 0%, var(--light-green) 100%);
+            color: white;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-blue);
+            padding: 3rem 10%;
+            text-align: center;
+            border-top: 1px solid rgba(75, 179, 191, 0.2);
+        }
+
+        footer p {
+            color: rgba(248, 255, 254, 0.7);
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--light-green);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            section {
+                padding: 6rem 6%;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            section {
+                padding: 5rem 5%;
+            }
+
+            #hero {
+                padding-top: 6rem;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .projects-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="wave-container">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">Jace Winko</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Expertise</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#blog">Insights</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <span class="hero-tag">Financial Crime Review Analyst, CAMS</span>
+            <h1>Protecting the <span class="gradient-text">financial system</span> through data-driven compliance</h1>
+            <p class="hero-subtitle">Transaction Monitoring | Enhanced Due Diligence | SAR Filing | Sanctions Screening
+            </p>
+            <p class="hero-description">
+                Experienced in conducting investigations, performing enhanced due diligence, and
+                delivering risk-based compliance solutions for banks, FinTechs, and payment providers.
+                Specialized in cryptocurrency compliance with proven results in process optimization and
+                false positive reduction as well as sanctions.
+            </p>
+            <div class="cta-buttons">
+                <a href="#experience" class="btn btn-primary">View Experience</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="content-section">
+        <div class="section-header reveal">
+            <span class="section-tag">About</span>
+            <h2>Professional Background</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text reveal">
+                <h3>Financial Crime Analyst</h3>
+                <p>
+                    Financial crime and compliance professional with expertise in transaction monitoring,
+                    KYC/EDD reviews, and sanctions screening, delivering risk-based solutions across banking,
+                    fintech, and payments industries. CAMS-certified with TRM Certified Investigator credentials
+                    specializing in cryptocurrency compliance and blockchain analysis.
+                </p>
+                <p>
+                    Currently pursuing my Master of Science in Financial Crime and Compliance Management at
+                    Utica University (expected December 2026), building on my B.A. in International and Global
+                    Studies with a Minor in Intelligence and National Security from the University of Central
+                    Florida. My unique background combines financial crime expertise with intelligence analysis
+                    training, enabling me to identify patterns and assess complex risk scenarios across
+                    traditional and emerging payment channels.
+                </p>
+            </div>
+            <div class="experience-list reveal">
+                <div class="experience-card">
+                    <h4>Financial Crime Review Analyst</h4>
+                    <div class="company">Crowe</div>
+                    <div class="duration">February 2024 - Present</div>
+                    <p>
+                        Deliver financial crime consulting to banks, FinTechs, MSBs, and third-party payment
+                        providers. Conduct investigations using Actimize, FIS, SAS, CLEAR, and LexisNexis.
+                        Review transaction monitoring alerts for AML, fraud, and terrorist financing while maintaining
+                        compliance with BSA, USA PATRIOT Act, and OFAC regulations.
+                    </p>
+                    <p>
+                        <strong>Key Accomplishments:</strong> Delivered 2,000+ hours of consulting across multiple
+                        clients. Identified workflow inefficiencies and implemented adjustments that reduced case
+                        handling times by 25-30%. Partnered with product and risk teams to refine monitoring rules,
+                        reducing false positives while maintaining compliance coverage. Collaborated with QA teams to
+                        remediate recurring compliance issues, strengthening consistency and accuracy in case reviews.
+                    </p>
+                </div>
+                <div class="experience-card">
+                    <h4>FIU Analyst</h4>
+                    <div class="company">PS Partner Solutions (Contract - CIT Bank / First Citizens Bank)</div>
+                    <div class="duration">June 2021 - December 2022 · 1 yr 7 mos</div>
+                    <p>
+                        Conducted transaction-based investigations for potential money laundering, terrorist
+                        financing, and fraud. Analyzed unusual and high-risk financial activity using Actimize,
+                        CLEAR, and FIS. Researched and analyzed customer behavior in accordance with regulatory
+                        expectations. Drafted detailed SAR narratives and maintained designated monthly case queues.
+                    </p>
+                    <p>
+                        <strong>Key Accomplishments:</strong> Contributed 3,000+ hours to Top 20 Bank investigations,
+                        conducting an average of 20+ in-depth investigations per day across multiple geographies.
+                        Drafted SAR narratives used in regulatory filings, ensuring alignment with
+                        BSA/AML and CFT standards. Supported QA reviewers by clarifying investigative documentation,
+                        contributing to reduced repeat errors in escalations. Performed enhanced due diligence (EDD)
+                        on high-risk individuals and entities, delivering risk-based recommendations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-header reveal">
+            <span class="section-tag">Expertise</span>
+            <h2>Core Competencies</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category reveal">
+                <h3>Investigation & Monitoring</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Transaction Monitoring</span>
+                    <span class="skill-tag">DeepDive Investigations</span>
+                    <span class="skill-tag">Alert Disposition</span>
+                    <span class="skill-tag">Pattern Analysis</span>
+                    <span class="skill-tag">Enhanced Due Diligence</span>
+                    <span class="skill-tag">Risk Assessments</span>
+                </div>
+            </div>
+            <div class="skill-category reveal">
+                <h3>Compliance Tools & Platforms</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Actimize</span>
+                    <span class="skill-tag">FIS</span>
+                    <span class="skill-tag">SAS</span>
+                    <span class="skill-tag">CLEAR</span>
+                    <span class="skill-tag">LexisNexis</span>
+                    <span class="skill-tag">TRM Labs</span>
+                </div>
+            </div>
+            <div class="skill-category reveal">
+                <h3>Regulatory & Reporting</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">BSA/AML Compliance</span>
+                    <span class="skill-tag">SAR Filing</span>
+                    <span class="skill-tag">USA PATRIOT Act</span>
+                    <span class="skill-tag">OFAC Sanctions</span>
+                    <span class="skill-tag">CFT Regulations</span>
+                    <span class="skill-tag">QA Review</span>
+                </div>
+            </div>
+            <div class="skill-category reveal">
+                <h3>Specialized Expertise</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Cryptocurrency Compliance</span>
+                    <span class="skill-tag">Blockchain Analysis</span>
+                    <span class="skill-tag">PEP Screening</span>
+                    <span class="skill-tag">Fraud Detection</span>
+                    <span class="skill-tag">Process Improvement</span>
+                    <span class="skill-tag">Cross-Functional Collaboration</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="content-section">
+        <div class="section-header reveal">
+            <span class="section-tag">Professional Development</span>
+            <h2>Certifications & Education</h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card reveal">
+                <div class="project-image">🎓</div>
+                <div class="project-content">
+                    <h3>CAMS Certification</h3>
+                    <p>
+                        Certified Anti-Money Laundering Specialist (CAMS) from ACAMS - the gold standard
+                        certification for AML professionals. Issued October 2025.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">CAMS</span>
+                        <span class="project-tag">ACAMS</span>
+                        <span class="project-tag">AML</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-image">🔐</div>
+                <div class="project-content">
+                    <h3>TRM Certified Investigator</h3>
+                    <p>
+                        TRM-CI certification specializing in cryptocurrency investigations and blockchain analysis.
+                        Issued January 2025, valid through January 2027.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">TRM-CI</span>
+                        <span class="project-tag">Cryptocurrency</span>
+                        <span class="project-tag">Blockchain</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-image">💎</div>
+                <div class="project-content">
+                    <h3>TRM Crypto Fundamentals</h3>
+                    <p>
+                        TRM-CFC certification covering cryptocurrency fundamentals, digital asset risk management,
+                        and compliance frameworks. Issued November 2024, valid through November 2026.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">TRM-CFC</span>
+                        <span class="project-tag">Crypto Compliance</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-image">🎓</div>
+                <div class="project-content">
+                    <h3>Master's Degree (In Progress)</h3>
+                    <p>
+                        Master of Science in Financial Crime and Compliance Management from Utica University.
+                        Expected graduation December 2026.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Utica University</span>
+                        <span class="project-tag">MS Degree</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-image">📚</div>
+                <div class="project-content">
+                    <h3>Bachelor's Degree</h3>
+                    <p>
+                        B.A. in International and Global Studies with a Minor in Intelligence and National Security
+                        from the University of Central Florida. Graduated December 2022 with 3.3 GPA.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">UCF</span>
+                        <span class="project-tag">Intelligence</span>
+                        <span class="project-tag">Global Studies</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-image">📋</div>
+                <div class="project-content">
+                    <h3>Specialized Skills</h3>
+                    <p>
+                        Advanced training in White Collar Crime, Project Management, Writing, Research,
+                        Analytical Reasoning, and Communication within financial crime contexts.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">White Collar Crime</span>
+                        <span class="project-tag">Research</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header reveal">
+            <span class="section-tag">Personal Projects</span>
+            <h2>Built Applications & Tools</h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card reveal">
+                <div class="project-image">🔧</div>
+                <div class="project-content">
+                    <h3>SAR QA Web Application</h3>
+                    <p>
+                        <em>Currently In Development</em> – Building a web-based quality assurance tool for
+                        Suspicious Activity Report review and validation. Will streamline SAR QA workflows,
+                        automate narrative validation, and provide regulatory checklist verification for
+                        compliance teams.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Web Development</span>
+                        <span class="project-tag">SAR QA</span>
+                        <span class="project-tag">In Development</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-image">💡</div>
+                <div class="project-content">
+                    <h3>Future Project Slot</h3>
+                    <p>
+                        This space is reserved for upcoming personal projects. Potential ideas include
+                        transaction pattern visualizers, AML case management tools, or compliance education
+                        platforms. Check back soon for updates!
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Coming Soon</span>
+                        <span class="project-tag">Personal Build</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-image">🚀</div>
+                <div class="project-content">
+                    <h3>Future Project Slot</h3>
+                    <p>
+                        Another space for personal projects as I continue building tools that solve real
+                        compliance problems. Ideas in the pipeline include cryptocurrency risk scoring tools
+                        and sanctions screening simulators.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Coming Soon</span>
+                        <span class="project-tag">Personal Build</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog">
+        <div class="section-header reveal">
+            <span class="section-tag">Insights</span>
+            <h2>Compliance Insights</h2>
+        </div>
+        <div class="blog-grid">
+            <div class="blog-card reveal">
+                <div class="blog-date">Coming Soon</div>
+                <h3>Cryptocurrency Compliance: Navigating the TRM Framework</h3>
+                <p>
+                    Insights into cryptocurrency investigations, blockchain analysis techniques, and
+                    applying TRM methodologies to identify suspicious digital asset transactions.
+                </p>
+                <a href="#" class="blog-link">Read more →</a>
+            </div>
+
+            <div class="blog-card reveal">
+                <div class="blog-date">Coming Soon</div>
+                <h3>Effective SAR Narrative Writing</h3>
+                <p>
+                    Best practices for writing comprehensive Suspicious Activity Reports that clearly
+                    communicate findings while including adequate supporting documentation for regulators.
+                </p>
+                <a href="#" class="blog-link">Read more →</a>
+            </div>
+
+            <div class="blog-card reveal">
+                <div class="blog-date">Coming Soon</div>
+                <h3>Transaction Monitoring in FinTech</h3>
+                <p>
+                    Challenges and strategies for conducting AML investigations in the FinTech space,
+                    including payment processors, MSBs, and emerging financial technology platforms.
+                </p>
+                <a href="#" class="blog-link">Read more →</a>
+            </div>
+
+            <div class="blog-card reveal">
+                <div class="blog-date">Coming Soon</div>
+                <h3>Pattern Recognition in Financial Crime</h3>
+                <p>
+                    Techniques for identifying money laundering patterns, analyzing customer behavior anomalies,
+                    and leveraging data analysis to improve investigation efficiency.
+                </p>
+                <a href="#" class="blog-link">Read more →</a>
+            </div>
+
+            <div class="blog-card reveal">
+                <div class="blog-date">Coming Soon</div>
+                <h3>OFAC Sanctions Screening Best Practices</h3>
+                <p>
+                    Practical guidance for maintaining effective sanctions compliance programs, managing
+                    false positives, and staying current with evolving OFAC requirements.
+                </p>
+                <a href="#" class="blog-link">Read more →</a>
+            </div>
+
+            <div class="blog-card reveal">
+                <div class="blog-date">Coming Soon</div>
+                <h3>Career Path: From Intelligence Studies to Financial Crime</h3>
+                <p>
+                    How an Intelligence and National Security background translates to financial crime
+                    investigations, and the skills that transfer between these fields.
+                </p>
+                <a href="#" class="blog-link">Read more →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="content-section">
+        <div class="contact-content">
+            <div class="section-header reveal">
+                <span class="section-tag">Get In Touch</span>
+                <h2>Contact</h2>
+            </div>
+            <p class="reveal">
+                Interested in discussing compliance opportunities, consulting engagements, or professional
+                collaboration?
+                I'm open to connecting with fellow compliance professionals and organizations.
+            </p>
+            <div class="contact-links reveal">
+                <a href="mailto:jacewinkowork@protonmail.com" class="contact-link">
+                    <span class="contact-icon">📧</span>
+                    Email
+                </a>
+                <a href="https://linkedin.com/in/jnwinko" class="contact-link" target="_blank">
+                    <span class="contact-icon">💼</span>
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Jace Winko. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#skills">Expertise</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#blog">Insights</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Reveal animations on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 100;
+
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+    </script>
+</body>
+
+</html>
